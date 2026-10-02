@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>LURION Telão 3D</title>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000}
+video{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;background:#000}
+#fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font:700 48px Arial;background:#000;z-index:-1}
+</style>
+</head>
+<body>
+<div id="fallback">LURION</div>
+<video id="screen" autoplay loop muted playsinline preload="auto"></video>
+<script>
+const v=document.getElementById('screen');
+const q=new URLSearchParams(location.search);
+const requested=(q.get('video')||'telao3.mp4').toLowerCase();
+const allowed=['telao1.mp4','telao2.mp4','telao3.mp4'];
+const chosen=allowed.includes(requested)?requested:'telao3.mp4';
+const mode=(q.get('mode')||'near').toLowerCase();
+const source=mode==='far'?chosen.replace('.mp4','_far.mp4'):chosen;
+const ver=q.get('v')||'7';
+v.src=source+'?v='+encodeURIComponent(ver);
+const play=()=>v.play().catch(()=>setTimeout(play,1000));
+v.addEventListener('canplay',play);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)play();});
+play();
+</script>
+</body>
+</html>

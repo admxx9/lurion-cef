@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lurion Loading</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000;font-family:Arial,Helvetica,sans-serif;user-select:none}
+#bgVideo{position:fixed;inset:0;width:100vw;height:100vh;object-fit:cover;background:#000}
+.music{position:fixed;right:5.2vw;bottom:12.2vh;width:215px;color:#fff;z-index:10;text-shadow:0 1px 5px rgba(0,0,0,.75)}
+.title{font-size:14px;font-weight:600;margin:0 0 13px 0}.song-progress{height:4px;background:#0b0b0b;width:100%;overflow:hidden;margin-bottom:20px}.song-fill{height:100%;width:0;background:rgba(255,255,255,.82)}
+.controls{display:flex;align-items:center;gap:14px}.btn{border:0;background:none;color:#fff;padding:0;width:17px;height:20px;display:grid;place-items:center;cursor:pointer}.btn svg{width:14px;height:14px;fill:currentColor}.btn.play svg{width:17px;height:17px}.btn.disabled{opacity:.9;cursor:default}
+.volume{margin-left:auto;width:82px;height:20px;display:flex;align-items:center}.volume input{-webkit-appearance:none;appearance:none;width:100%;height:3px;background:#111;outline:none}.volume input::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:0 0 4px rgba(0,0,0,.45)}
+.status{position:fixed;right:4.8vw;bottom:4.1vh;background:rgba(5,5,5,.78);color:#fff;padding:8px 12px;font-size:11px;font-weight:600;z-index:10;display:flex;align-items:center;gap:9px}.spin{width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:900px){.music{right:28px;bottom:98px;width:205px}.status{right:28px;bottom:28px}}
+</style></head><body>
+<video id="bgVideo" autoplay muted loop playsinline preload="auto"><source src="loadscren.mp4" type="video/mp4"></video>
+<audio id="music" autoplay loop preload="auto"><source src="Lurion.mp3?v=musicfix2" type="audio/mpeg"></audio>
+<div class="music"><div class="title">Lurion</div><div class="song-progress"><div id="songFill" class="song-fill"></div></div><div class="controls">
+<button class="btn disabled" disabled><svg viewBox="0 0 24 24"><path d="M6 5h2v14H6V5zm3 7 9-6v12l-9-6z"/></svg></button>
+<button id="playPause" class="btn play"><svg id="pauseI" viewBox="0 0 24 24"><path d="M7 5h4v14H7V5zm6 0h4v14h-4V5z"/></svg><svg id="playI" viewBox="0 0 24 24" style="display:none"><path d="M8 5v14l11-7z"/></svg></button>
+<button class="btn disabled" disabled><svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2V5zM6 6l9 6-9 6V6z"/></svg></button>
+<div class="volume"><input id="volume" type="range" min="0" max="100" value="60" aria-label="Volume"></div></div></div>
+<div class="status"><span>Carregando servidor...</span><span class="spin"></span></div>
+<script>
+const video=document.getElementById('bgVideo'),music=document.getElementById('music'),fill=document.getElementById('songFill'),btn=document.getElementById('playPause'),pauseI=document.getElementById('pauseI'),playI=document.getElementById('playI'),volume=document.getElementById('volume');
+function emit(n){try{if(window.cef&&cef.emit)cef.emit(n)}catch(e){}}
+
+// Musica direto no CEF. Para qualquer stream antigo do SA-MP para evitar duplicacao.
+emit('loading:music_pause');
+music.volume=Math.max(0,Math.min(1,Number(volume.value)/100));
+
+function updatePlayIcon(){
+ const paused=music.paused;
+ pauseI.style.display=paused?'none':'block';
+ playI.style.display=paused?'block':'none';
+}
+async function startMusic(){
+ try{await music.play()}catch(e){}
+ updatePlayIcon();
+}
+function draw(){
+ const d=Number.isFinite(music.duration)?music.duration:0;
+ const t=Number.isFinite(music.currentTime)?music.currentTime:0;
+ fill.style.width=(d>0?Math.min(100,(t/d)*100):0)+'%';
+ requestAnimationFrame(draw);
+}
+draw();
+
+btn.onclick=()=>{
+ if(music.paused) startMusic();
+ else {music.pause();updatePlayIcon();}
+};
+volume.oninput=()=>{music.volume=Math.max(0,Math.min(1,Number(volume.value)/100));};
+music.addEventListener('play',updatePlayIcon);
+music.addEventListener('pause',updatePlayIcon);
+music.addEventListener('canplay',startMusic,{once:true});
+window.addEventListener('load',startMusic,{once:true});
+document.addEventListener('click',()=>{if(music.paused)startMusic()},{once:true});
+video.play().catch(()=>{});
+startMusic();
+document.addEventListener('contextmenu',e=>e.preventDefault());
+</script></body></html>

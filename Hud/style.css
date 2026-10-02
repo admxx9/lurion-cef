@@ -1,0 +1,1066 @@
+.svgCircle circle,
+.speedometer-frame svg path {
+  fill: none;
+}
+
+.svgCircle circle {
+  stroke-width:.2vh;
+}
+
+.logo {
+  height:15vh;
+}
+
+.logo,.playerHud {
+  position:absolute;
+}
+
+.speedometer-frame svg path:nth-child(1) {
+  stroke:white;
+}
+
+.logo {
+  left:0;
+}
+
+.logo {
+  right:0;
+}
+
+.speed-container .ldBar path.mainline {
+  stroke-width:2;
+}
+
+.logo {
+  top:-2%;
+}
+
+#car-container {
+  width:12.865vw;
+}
+
+.speedometer-frame svg path {
+  width:11.406vw !important;
+}
+
+.playerHud .circle {
+  width:37.5pt;
+}
+
+.playerHud .circle {
+  height:50px;
+}
+
+.logo {
+  margin-left:auto;
+}
+
+.logo {
+  margin-bottom:auto;
+}
+
+.logo {
+  margin-right:auto;
+}
+
+.speedometer-frame svg path {
+  height:9.271vw !important;
+}
+
+.svgCircle circle {
+  stroke-dasharray:125;
+}
+
+.logo {
+  margin-top:auto;
+}
+
+.svgCircle circle {
+  transition:all .5s;
+}
+
+.playerHud .circle {
+  display:inline-block;
+}
+
+* {
+  margin-left:0;
+}
+
+.logo {
+  zoom:1.1;
+}
+
+.nitro-frame svg path:nth-child(1) {
+  stroke-opacity:.2;
+}
+
+.playerHud {
+  width:auto;
+}
+
+.playerHud {
+  height:5vh;
+}
+
+body {
+  font-family:"Rubik";
+}
+
+.svgCircle circle {
+  transform:rotate(-90deg);
+}
+
+.playerHud {
+  bottom:3.5%;
+}
+
+.playerHud {
+  right:3.5%;
+}
+
+.svgCircle .circlesedeFill,.svgCircle .circleBackArmour,.svgCircle .circlestressFill,.svgCircle .circleBack {
+}
+
+.fIconSede,.fIconColete,.fIconFome,.fIconVida {
+  position:relative;
+}
+
+.fIconVida,.fIconColete {
+  top:-64%;
+}
+
+.fIconVida {
+  left:31.5%;
+}
+
+.fIconSede,.fIconColete,.fIconVida,.fIconFome {
+  color:#ccc;
+}
+
+* {
+  margin-bottom:0;
+}
+
+.speed-container .ldBar path.mainline {
+  stroke:#fff;
+}
+
+.svgCircle circle {
+  transform-origin:center;
+}
+
+.fIconColete {
+  left:33%;
+}
+
+#car-container {
+  height:10.417vw;
+}
+
+.fIconSede,.fIconFome {
+  top:-66%;
+}
+
+.speedometer-frame svg path:nth-child(2) {
+  stroke-dasharray:31rem;
+}
+
+.speed-container .ldBar path.mainline {
+  stroke-linecap:round;
+}
+
+.fIconFome {
+  left:32.5%;
+}
+
+.fIconSede {
+  left:38.5%;
+}
+
+.svgCircle {
+  height:50px;
+}
+
+* {
+  margin-right:0;
+}
+
+* {
+  margin-top:0;
+}
+
+.svgCircle {
+  width:3.125pc;
+}
+
+.carHud,#speedLevel svg {
+  width:24vh;
+}
+
+.speedometer-frame svg path:nth-child(2) {
+  stroke-dashoffset:31rem;
+}
+
+.lifeFill {
+  filter:drop-shadow(0px 0px .2vh #f52b1c);
+}
+
+.fuel-frame img {
+  width:1vw;
+}
+
+.lifeFill {
+  stroke:#f52b1c;
+}
+
+.HungerFill,.lifeFill,.ArmourFill,.stressFill,.sedeFill {
+  stroke-dashoffset:100;
+}
+
+.fuel-frame img {
+  height:1.438vw;
+}
+
+.ArmourFill {
+  filter:drop-shadow(0px 0px .2vh #1178ee);
+}
+
+.ArmourFill {
+  stroke:#1178ee;
+}
+
+.speedometer-frame svg path,.speedometer-frame svg path:nth-child(2) {
+  stroke-opacity:1;
+}
+
+.speedometer-frame svg path {
+  stroke-dasharray:30rem;
+}
+
+.speedometer-frame svg path:nth-child(2) {
+  stroke:white;
+}
+
+.HungerFill {
+  filter:drop-shadow(0px 0px .2vh #ee7c11);
+}
+
+.HungerFill {
+  stroke:#ee7c11;
+}
+
+body {
+  background-size:100%;
+}
+
+.sedeFill {
+  filter:drop-shadow(0px 0px .2vh #11cdee);
+}
+
+.sedeFill {
+  stroke:#11cdee;
+}
+
+.stressFill {
+  filter:drop-shadow(0px 0px .2vh #c211ee);
+}
+
+.speed-container .ldBar path.mainline {
+  transition:all .3s;
+}
+
+.stressFill {
+  stroke:#c211ee;
+}
+
+#speedLevel svg {
+  height:13vh;
+}
+
+.fuel-frame img,.carHud {
+  position:absolute;
+}
+
+.carHud {
+  right:4.2%;
+}
+
+.fuel-frame svg path,.speedometer-frame svg path {
+  stroke-dashoffset:0;
+}
+
+body {
+  overflow-x:hidden;
+}
+
+.carHud {
+  bottom:9%;
+}
+
+.carHud {
+  height:17vh;
+}
+
+.speedometer-frame {
+  width:12.865vw;
+}
+
+.speedometer-frame {
+  height:10.417vw;
+}
+
+body {
+  overflow-y:hidden;
+}
+
+.fuel-frame,.nitro-frame,.icons-frame,.speedometer-frame {
+  display:flex;
+}
+
+.speedometer-frame svg path:nth-child(2) {
+  transition:all ease .1s;
+}
+
+.speedometer-frame {
+  justify-content:center;
+}
+
+.speed-container .ldBar path.baseline {
+  stroke-width:1;
+}
+
+.speedometer-frame {
+  align-items:center;
+}
+
+.speedometer-frame {
+  position:relative;
+}
+
+.fuel-frame,.nitro-frame {
+  width:2.344vw;
+}
+
+.fuel-frame,.nitro-frame {
+  height:6.563vw;
+}
+
+.fuel-frame,.nitro-frame,.km,.mileage-frame {
+  position:absolute;
+}
+
+.fuel-frame,.nitro-frame {
+  bottom:0;
+}
+
+* {
+  padding-left:0;
+}
+
+.fuel-frame {
+  justify-content:flex-start;
+}
+
+.fuel-frame,.nitro-frame {
+  align-items:flex-end;
+}
+
+* {
+  padding-bottom:0;
+}
+
+.svgCircle .circleBacklifeFill,.svgCircle .circleArmourFill,.svgCircle .circleHungerFill {
+}
+
+.nitro-frame {
+  right:0;
+}
+
+.nitro-frame svg path,.fuel-frame svg path {
+  fill:none;
+}
+
+.fuel-frame svg path {
+  stroke-opacity:1;
+}
+
+* {
+  padding-right:0;
+}
+
+.nitro-frame {
+  justify-content:flex-end;
+}
+
+.mileage-frame,ss {
+  color:#fff;
+}
+
+.fuel-frame img {
+  left:1.5vw;
+}
+
+body {
+  background:transparent;
+}
+
+.nitro-frame svg path:nth-child(1) {
+  stroke:#fff !important;
+}
+
+.mileage-frame {
+  font-family:"Rubik";
+}
+
+.nitro-frame svg path {
+  stroke-dasharray:8rem;
+}
+
+.mileage-frame {
+  font-weight:600;
+}
+
+.mileage-frame {
+  margin-top:1vw;
+}
+
+.mileage-frame {
+  font-size:3.333vw;
+}
+
+.mileage-frame {
+  text-align:center;
+}
+
+.km {
+  bottom:-.3vw;
+}
+
+#speedLevel svg {
+  margin-top:50%;
+}
+
+* {
+  padding-top:0;
+}
+
+.km {
+  font-weight:500;
+}
+
+.km {
+  font-size:.833vw;
+}
+
+.fuel-frame img,.nitro-frame img {
+  bottom:-1vw;
+}
+
+.nitro-frame img {
+  width:1vw;
+}
+
+.nitro-frame svg path:nth-child(1) {
+  stroke-opacity:.2;
+}
+
+.km {
+  left:50%;
+}
+
+* {
+  -webkit-touch-callout:none;
+}
+
+.km {
+  transform:translate(-50%);
+}
+
+.km {
+  color:rgba(255,255,255,.5);
+}
+
+.icons-frame {
+  width:4.74vw;
+}
+
+.icons-frame {
+  height:1.146vw;
+}
+
+.speed-container .section {
+  width:50%;
+}
+
+.SpeedoIcons,.icons-frame,.nitro-frame img,.infos2,.infos,#car-container {
+  position:absolute;
+}
+
+.nitro-frame img {
+  height:1.438vw;
+}
+
+.icons-frame {
+  bottom:0;
+}
+
+.icons-frame {
+  justify-content:space-between;
+}
+
+.icons-frame {
+  align-items:center;
+}
+
+ss {
+  color:#ddd;
+}
+
+.infos,.infos2 {
+  right:3.5%;
+}
+
+.item-cima,.infos,.item-cima2,.infos2 {
+  width:auto;
+}
+
+.nitro-frame img {
+  left:-.3vw;
+}
+
+.fuel-frame svg path:nth-child(2) {
+  stroke-dasharray:9rem;
+}
+
+.SpeedoIcons svg {
+  width:15%;
+}
+
+.infos2,.infos {
+  height:6vh;
+}
+
+.fuel-frame svg path:nth-child(2) {
+  stroke-dashoffset:9rem;
+}
+
+.infos {
+  top:4%;
+}
+
+#car-container {
+  right:4%;
+}
+
+.fuel-frame svg path:nth-child(2) {
+  stroke:#f66 !important;
+}
+
+.fuel-frame svg path:nth-child(2),.nitro-frame svg path {
+  stroke-opacity:1;
+}
+
+.infos2 {
+  top:8%;
+}
+
+.bullets span {
+  color:#fff;
+}
+
+.item-cima,.item-cima2 {
+  height:3.5vh;
+}
+
+. {
+  border-radius:.5vh;
+}
+
+.item-cima,.item-cima2 {
+  padding-right:1.8vh;
+}
+
+.speed-container .ldBar path.baseline {
+  stroke:rgba(255,255,255,.11);
+}
+
+.item-cima,.item-cima2 {
+  background:rgba(15,15,15,.6);
+}
+
+.bullets span {
+  text-align:center;
+}
+
+.bullets span {
+  font-size:19.809pt;
+}
+
+.item-cima,.item-cima2 {
+  font-family:"Rubik";
+}
+
+.bullets span {
+  font-style:normal;
+}
+
+.item-cima,.item-cima2 {
+  font-size:1.4vh;
+}
+
+.item-cima,.item-cima2 {
+  line-height:3.5vh;
+}
+
+.item-cima,.item-cima2 {
+  display:inline-block;
+}
+
+.nitro-frame svg path {
+  stroke-dasharray:8rem;
+}
+
+.speed-container .ldBar path.baseline {
+  stroke-linecap:round;
+}
+
+.bullets span {
+  font-weight:600;
+}
+
+.item-cima2 {
+  border-radius:5px;
+}
+
+.nitro-frame svg path {
+  stroke-dashoffset:0;
+}
+
+.bullets b,.mileage-frame p span {
+  color:rgba(255,255,255,.5);
+}
+
+.IconCima {
+  margin-left:1.5vh;
+}
+
+* {
+  -webkit-user-select:none;
+}
+
+.bullets span,.bullets b {
+  line-height:normal;
+}
+
+.IconCima {
+  color:#ccc;
+}
+
+ss {
+  margin-left:1vh;
+}
+
+.nitro-frame svg path:nth-child(2),.fuel-frame svg path:nth-child(2) {
+  transition:all ease .1s;
+}
+
+.SpeedoIcons {
+  height:4vh;
+}
+
+.SpeedoIcons {
+  width:50%;
+}
+
+.bullets b {
+  font-size:20.294px;
+}
+
+.nitro-frame svg path:nth-child(1) {
+  stroke:#fff !important;
+}
+
+.bullets,.SpeedoIcons {
+  display:flex;
+}
+
+.SpeedoIcons {
+  flex-flow:row wrap;
+}
+
+.SpeedoIcons,.bullets {
+  justify-content:center;
+}
+
+.nitro-frame svg path:nth-child(1) {
+  stroke-opacity:.2;
+}
+
+.SpeedoIcons {
+  bottom:0vh;
+}
+
+.SpeedoIcons {
+  right:0em;
+}
+
+.SpeedoIcons {
+  transform:translateX(-50%);
+}
+
+.SpeedoIcons {
+  gap:6%;
+}
+
+.Gray {
+  fill:#fff;
+}
+
+.Gray {
+  color:#fff;
+}
+
+.nitro-frame svg path:nth-child(2) {
+  stroke-dasharray:9rem;
+}
+
+#car-container {
+  bottom:10.5%;
+}
+
+.Yellow {
+  fill:#fec026;
+}
+
+.nitro-frame svg path:nth-child(2) {
+  stroke-dashoffset:9rem;
+}
+
+.Yellow {
+  color:#fec026;
+}
+
+.Green {
+  fill:#83d52b;
+}
+
+.Green {
+  color:#83d52b;
+}
+
+.Red {
+  fill:#f43252;
+}
+
+.Red {
+  color:#f43252;
+}
+
+.nitro-frame svg path:nth-child(2) {
+  stroke:#41eab7 !important;
+}
+
+.Blue {
+  fill:#40a7f7;
+}
+
+.Blue {
+  color:#40a7f7;
+}
+
+.bullets,#speedLevel svg {
+  position:absolute;
+}
+
+.bullets b {
+  font-style:normal;
+}
+
+.bullets {
+  right:0;
+}
+
+.bullets {
+  margin-top:80;
+}
+
+.bullets {
+  align-items:center;
+}
+
+.bullets {
+  gap:.086979167in;
+}
+
+.bullets b {
+  font-weight:500;
+}
+
+* {
+  -khtml-user-select:none;
+}
+
+* {
+  -moz-user-select:none;
+}
+
+* {
+  -ms-user-select:none;
+}
+
+.nitro-frame svg path:nth-child(2) {
+  stroke-opacity:1;
+}
+
+* {
+  user-select:none;
+}
+
+#voice.active {
+}
+
+#voice.inactive {
+  color:#ddd;
+}
+
+/* LURION RP - logo oficial: centro superior no HUD in-game */
+.logo{width:11.5vw!important;height:auto!important;max-height:8.5vh!important;top:2.2%!important;left:50%!important;right:auto!important;margin:0!important;zoom:1!important;transform:translateX(-50%)!important;transform-origin:top center!important;object-fit:contain!important;opacity:.72!important;filter:drop-shadow(0 2px 8px rgba(0,0,0,.35));}
+
+/* LURION: revela o mundo com o mesmo fade do Lobby */
+.lurion-entry-fade {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 2147483647;
+    opacity: 1;
+    transition: 1.15s ease;
+    pointer-events: none;
+}
+.lurion-entry-fade.reveal { opacity: 0; }
+
+/* ===================== LURION RADAR / SPOILER_Radar ===================== */
+#lurion-radar{
+  position:fixed;
+  left:clamp(14px,1.04vw,20px);
+  bottom:clamp(14px,1.04vw,20px);
+  width:clamp(195px,calc(120.7px + 7.254vw),260px);
+  aspect-ratio:260 / 146;
+  z-index:120;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  overflow:hidden;
+  border-radius:4px;
+  transform:translateY(8px);
+  transition:opacity .20s ease,transform .20s ease,visibility .20s;
+  box-shadow:0 8px 28px rgba(0,0,0,.42);
+}
+#lurion-radar.active{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+#lurion-radar-world,
+#lurion-radar-canvas{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:133.08%;
+  height:auto;
+  aspect-ratio:1 / 1;
+  display:block;
+  transform:translate(-50%,-50%) rotate(0deg);
+  transform-origin:center center;
+  will-change:transform;
+}
+#lurion-radar-world{
+  overflow:hidden;
+  background:#050507;
+  z-index:1;
+}
+#lurion-radar-map{
+  position:absolute;
+  left:0;
+  top:0;
+  width:2048px;
+  height:3072px;
+  max-width:none;
+  transform-origin:0 0;
+  will-change:transform;
+  pointer-events:none;
+  user-select:none;
+}
+#lurion-radar-canvas{
+  background:transparent;
+  z-index:2;
+  pointer-events:none;
+}
+#lurion-radar .radar-frame{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  z-index:3;
+  object-fit:fill;
+}
+#lurion-radar .radar-arrow{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:clamp(17px,1.05vw,20px);
+  height:clamp(17px,1.05vw,20px);
+  z-index:4;
+  transform:translate(-50%,-50%);
+  object-fit:contain;
+  filter:drop-shadow(0 1px 3px rgba(0,0,0,.8));
+}
+
+/* ===================== LURION BIG MAP / GPS ===================== */
+#lurion-bigmap{
+  position:fixed;
+  inset:0;
+  z-index:900000;
+  display:none;
+  overflow:hidden;
+  background:#050507;
+  color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+  user-select:none;
+}
+#lurion-bigmap.active{
+  display:block;
+}
+#lurion-bigmap-canvas{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  cursor:grab;
+  touch-action:none;
+}
+#lurion-bigmap-canvas:active{
+  cursor:grabbing;
+}
+.lurion-bigmap-top{
+  position:absolute;
+  left:28px;
+  top:24px;
+  z-index:2;
+  pointer-events:none;
+  padding:13px 16px;
+  border-radius:8px;
+  background:rgba(8,8,12,.82);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 8px 28px rgba(0,0,0,.32);
+}
+.lurion-bigmap-title{
+  color:#fff;
+  font-size:18px;
+  font-weight:800;
+  letter-spacing:.7px;
+}
+#lurion-bigmap-status{
+  margin-top:5px;
+  color:rgba(255,255,255,.72);
+  font-size:13px;
+  font-weight:500;
+}
+.lurion-bigmap-help{
+  position:absolute;
+  left:50%;
+  bottom:24px;
+  z-index:2;
+  transform:translateX(-50%);
+  pointer-events:none;
+  white-space:nowrap;
+  padding:10px 15px;
+  border-radius:7px;
+  background:rgba(8,8,12,.82);
+  border:1px solid rgba(255,255,255,.10);
+  color:rgba(255,255,255,.78);
+  font-size:13px;
+  box-shadow:0 8px 28px rgba(0,0,0,.28);
+}
+.lurion-bigmap-help b{
+  color:#c56cff;
+}
+body.lurion-bigmap-open #lurion-radar{
+  opacity:0!important;
+  visibility:hidden!important;
+}
+
+
+/* Cross original do radar MTA, fixo no centro do mapa grande */
+.lurion-bigmap-cross{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:clamp(170px,13.333vw,256px);
+  height:clamp(170px,13.333vw,256px);
+  transform:translate(-50%,-50%);
+  object-fit:contain;
+  pointer-events:none;
+  z-index:3;
+  opacity:.95;
+}
+.lurion-bigmap-top,
+.lurion-bigmap-help{
+  z-index:4;
+}
+
+
+/* BIGMAP cross-mode: a mira substitui totalmente o cursor */
+html.lurion-bigmap-open,
+html.lurion-bigmap-open *,
+body.lurion-bigmap-open,
+body.lurion-bigmap-open *{
+  cursor:none!important;
+}
+#lurion-bigmap-canvas,
+#lurion-bigmap-canvas:active{
+  cursor:none!important;
+}
+
+
+/* Mapa fullscreen em camada DOM/GPU; canvas fica so para rota e player */
+.lurion-bigmap-map{
+  position:absolute;
+  left:0;
+  top:0;
+  width:100vw;
+  height:150vw;
+  max-width:none;
+  max-height:none;
+  display:block;
+  object-fit:fill;
+  pointer-events:none;
+  transform-origin:0 0;
+  will-change:transform;
+  z-index:0;
+}
+#lurion-bigmap-canvas{
+  z-index:1;
+  background:transparent!important;
+}
+
+
+/* CEF antigo: cursor transparente real em vez de depender apenas de cursor:none */
+html.lurion-bigmap-open,
+html.lurion-bigmap-open *,
+body.lurion-bigmap-open,
+body.lurion-bigmap-open *,
+#lurion-bigmap,
+#lurion-bigmap *{
+  cursor:url("radar/transparent.png") 0 0, none!important;
+}
+
+
+/* Radar F2 sem foco de mouse: o cross e a unica mira */
+#lurion-bigmap,
+#lurion-bigmap *{
+  pointer-events:none!important;
+  cursor:none!important;
+}

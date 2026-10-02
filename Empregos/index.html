@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Agência de Emprego</title>
+<link rel="stylesheet" href="style.css?v=14">
+</head>
+<body>
+<div class="page">
+  <div class="tablet" aria-label="Agência de Emprego">
+    <div class="camera"></div>
+    <div class="screen">
+      <aside class="rail">
+        <img class="rail-logo" src="assets/agencia-emprego-neon.png?v=1" alt="Agência Emprego - Suas Tarefas">
+      </aside>
+
+      <main class="content">
+        <section class="jobs" id="jobs">
+          <article class="job-card" data-job="Motorista" data-salary="6000" data-level="9">
+            <img src="assets/motorista.svg" alt="Motorista">
+            <div class="job-body">
+              <h2>Motorista <span>9 LVL</span></h2>
+              <p>Nesse emprego você irá fazer rotas pré-definidas, buscar passageiros e deixá-los em seus pontos de destino. Você necessitará ter paciência e ser um ótimo motorista.</p>
+              <button class="tutorial">Ver Tutorial...</button>
+              <div class="job-bottom"><div><small>SALÁRIO</small><strong>R$ 6000 <em>/hora</em></strong></div><button class="start">COMEÇAR</button></div>
+            </div>
+          </article>
+
+          <article class="job-card" data-job="Minerador" data-salary="2500" data-level="0">
+            <img src="assets/minerador.svg" alt="Minerador">
+            <div class="job-body">
+              <h2>Minerador <span>0 LVL</span></h2>
+              <p>Nesse emprego você irá até as minas da cidade para quebrar as rochas mais duras atrás de joias raras. Você precisa ser forte e resistente.</p>
+              <button class="tutorial">Ver Tutorial...</button>
+              <div class="job-bottom"><div><small>SALÁRIO</small><strong>R$ 2500 <em>/hora</em></strong></div><button class="start">COMEÇAR</button></div>
+            </div>
+          </article>
+
+          <article class="job-card" data-job="Entregador" data-salary="2000" data-level="4">
+            <img src="assets/entregador.svg" alt="Entregador">
+            <div class="job-body">
+              <h2>Entregador <span>4 LVL</span></h2>
+              <p>Nesse emprego você irá pegar as encomendas no distribuidor e entregá-las em seus destinos no menor tempo possível. Você necessitará ser um bom motorista e lidar bem com pessoas.</p>
+              <button class="tutorial">Ver Tutorial...</button>
+              <div class="job-bottom"><div><small>SALÁRIO</small><strong>R$ 2000 <em>/hora</em></strong></div><button class="start">COMEÇAR</button></div>
+            </div>
+          </article>
+
+          <article class="job-card" data-job="Lixeiro" data-salary="1800" data-level="2">
+            <img src="assets/lixeiro.svg" alt="Lixeiro">
+            <div class="job-body">
+              <h2>Lixeiro <span>2 LVL</span></h2>
+              <p>Recolha os sacos de lixo espalhados pela cidade, complete sua rota e leve toda a carga até o ponto de descarte.</p>
+              <button class="tutorial">Ver Tutorial...</button>
+              <div class="job-bottom"><div><small>SALÁRIO</small><strong>R$ 1800 <em>/hora</em></strong></div><button class="start">COMEÇAR</button></div>
+            </div>
+          </article>
+
+          <article class="job-card" data-job="Fazendeiro" data-salary="3200" data-level="3">
+            <img src="assets/fazendeiro.svg" alt="Fazendeiro">
+            <div class="job-body">
+              <h2>Fazendeiro <span>3 LVL</span></h2>
+              <p>Plante, cuide da produção, recolha os fenos e venda sua carga. Quanto melhor a colheita, maior será o pagamento.</p>
+              <button class="tutorial">Ver Tutorial...</button>
+              <div class="job-bottom"><div><small>SALÁRIO</small><strong>R$ 3200 <em>/hora</em></strong></div><button class="start">COMEÇAR</button></div>
+            </div>
+          </article>
+
+          <article class="job-card" data-job="Taxista" data-salary="4500" data-level="6">
+            <img src="assets/taxista.svg" alt="Taxista">
+            <div class="job-body">
+              <h2>Taxista <span>6 LVL</span></h2>
+              <p>Atenda chamados pela cidade, busque passageiros e leve cada cliente ao destino com rapidez e segurança.</p>
+              <button class="tutorial">Ver Tutorial...</button>
+              <div class="job-bottom"><div><small>SALÁRIO</small><strong>R$ 4500 <em>/hora</em></strong></div><button class="start">COMEÇAR</button></div>
+            </div>
+          </article>
+        </section>
+
+        <section class="tasks">
+          <article class="task done"><h3>Entregue 25 passageiros <b>+4500XP</b></h3><p>PEGUE O EMPREGO DE TAXISTA E DÊ CARONA PARA 25 PASSAGEIROS</p><div class="task-foot"><div class="progress"><i style="width:100%"></i></div><strong>COMPLETA</strong></div></article>
+          <article class="task" data-current="0" data-max="10"><h3>Entregue 10 fenos <b>+1500XP</b></h3><p>PEGUE O EMPREGO DE FAZENDEIRO, PLANTE, RECOLHA E VENDA 10 FENOS</p><div class="task-foot"><div class="progress"><i style="width:0%"></i></div><strong>0 /10</strong></div></article>
+          <article class="task" data-current="0" data-max="2"><h3>Passe em 2 pontos <b>+1500XP</b></h3><p>PEGUE O EMPREGO DE MOTORISTA E PASSE POR 2 PONTOS</p><div class="task-foot"><div class="progress"><i style="width:0%"></i></div><strong>0 /2</strong></div></article>
+          <article class="task" data-current="8" data-max="25"><h3>Colete 25 sacos de lixo <b>+1500XP</b></h3><p>PEGUE O EMPREGO DE LIXEIRO E SAIA PELA CIDADE ATÉ COLETAR 25 SACOS</p><div class="task-foot"><div class="progress"><i style="width:32%"></i></div><strong>8 /25</strong></div></article>
+          <article class="task" data-current="0" data-max="45"><h3>Entregue 45 cartas <b>+6000XP</b></h3><p>PEGUE O EMPREGO DE ENTREGADOR E ENTREGUE 45 CARTAS</p><div class="task-foot"><div class="progress"><i style="width:0%"></i></div><strong>0 /45</strong></div></article>
+          <article class="task" data-current="0" data-max="20"><h3>Entregue 20 cartas <b>+2000XP</b></h3><p>PEGUE O EMPREGO DE ENTREGADOR E ENTREGUE 20 CARTAS</p><div class="task-foot"><div class="progress"><i style="width:0%"></i></div><strong>0 /20</strong></div></article>
+        </section>
+      </main>
+
+      <aside class="rightbar">
+        <section class="side-card xp-card">
+          <div><b id="xp">5555</b><span>/6000xp</span></div>
+          <div class="level-ring"><span>9</span></div>
+        </section>
+        <section class="side-card work-card">
+          <h4>CARTEIRA DE TRABALHO</h4>
+          <div class="person"><img src="assets/avatar.svg" alt=""><div><b id="person-name">PEDRO D</b><button id="change-photo">TROCAR FOTO</button></div></div>
+          <div class="job-active" id="active-job">SEM EMPREGO ATIVO</div>
+        </section>
+        <section class="side-card gains">
+          <h4>SEUS GANHOS</h4>
+          <span>HOJE</span><b id="today">0</b>
+          <span>TOTAIS</span><b id="total">1997933</b>
+        </section>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-box"><button class="modal-x" id="modal-close">×</button><small>TUTORIAL</small><h2 id="modal-title">Motorista</h2><p id="modal-text"></p><button class="modal-ok" id="modal-ok">ENTENDI</button></div>
+</div>
+<div class="toast" id="toast"></div>
+<script src="app.js?v=2"></script>
+</body>
+</html>

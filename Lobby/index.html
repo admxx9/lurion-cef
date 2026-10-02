@@ -1,0 +1,71 @@
+﻿<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lurion Lobby</title><link rel="stylesheet" href="styles.css?v=profile6"></head>
+<body>
+<div id="fade" class="fade"></div>
+<section id="lobbyView" class="screen">
+  <header><div class="brand"><img src="assets/lurion-logo.png" alt="Lurion RP"></div><div class="player-top"><span id="date"></span><span class="avatar"></span></div></header>
+  <main class="panel"><h3><span id="greeting">Bom dia</span>, <span id="username">Jogador</span>. <img src="assets/hand.gif"></h3>
+    <div class="tabs"><button class="tab active"><img src="assets/list.svg">Personagens</button><button class="tab muted"><img src="assets/plus.svg">Conquistas</button></div>
+    <div id="characters" class="characters"></div>
+  </main>
+  <footer><div class="tips"><h2>Dicas:</h2><p id="tip">Cada personagem possui sua prÃ³pria histÃ³ria e progresso.</p></div>
+    <div class="playbar"><span>lurion.com.br ðŸŒŽ</span><span>Launcher 1.0.0 ðŸ“¦</span><img src="assets/more.svg"><button id="playBtn">Jogar</button></div>
+  </footer>
+</section>
+<section id="createView" class="screen hidden">
+  <div class="creator-title">CRIAR<br>PERSONAGEM</div>
+
+  <div id="stage1" class="creator-stage">
+    <div class="creator-wrap"><div class="creator-form">
+      <label>Primeiro Nome</label><input id="firstName" maxlength="15" placeholder="Nome">
+      <label>Ãšltimo Nome</label><input id="lastName" maxlength="15" placeholder="Sobrenome">
+      <label>Idade</label><input id="age" maxlength="2" inputmode="numeric" placeholder="Idade">
+      <div class="gender-row"><button id="male" class="gender active">â™‚</button><span>GÃªnero Masculino</span><button id="female" class="gender">â™€</button><span>GÃªnero Feminino</span></div>
+      <label>Seu documento:</label><div class="id-card"><div class="id-top"><b>LOS SANTOS</b><i></i></div><h4>INTERNATIONAL PASSPORT</h4>
+        <ul><li>Nome: <strong id="docFirst">Jhon</strong></li><li>Sobrenome: <strong id="docLast">Doe</strong></li><li>Idade: <strong id="docAge">N/A</strong></li><li>Sexo: <strong id="docGender">Masculino</strong></li></ul></div>
+    </div></div>
+  </div>
+
+  <div id="stage2" class="creator-stage stage-hidden">
+    <div class="parents-panel">
+      <label class="stage-label">PARENTESCO</label>
+      <p class="stage-help">Escolha a aparÃªncia-base do seu personagem.</p>
+      <div id="parentsGrid" class="parents-grid"></div>
+      <label class="stage-label tone-label">TOM DE PELE</label>
+      <div id="toneGrid" class="tone-grid">
+        <button data-tone="0" class="tone active"></button><button data-tone="1" class="tone"></button><button data-tone="2" class="tone"></button><button data-tone="3" class="tone"></button><button data-tone="4" class="tone"></button><button data-tone="5" class="tone"></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="stage3" class="creator-stage stage-hidden">
+    <div class="clothes-panel">
+      <label class="stage-label">ROUPAS & ACESSÃ“RIOS</label>
+      <p class="stage-help">Selecione uma categoria e escolha a peÃ§a.</p>
+      <div class="clothes-tabs">
+        <button data-cat="tshirt" class="clothes-tab active">CAMISETA</button>
+        <button data-cat="pants" class="clothes-tab">CALÃ‡A</button>
+        <button data-cat="feet" class="clothes-tab">CALÃ‡ADO</button>
+        <button data-cat="accessory" class="clothes-tab">ACESSÃ“RIO</button>
+      </div>
+      <div id="clothesGrid" class="clothes-grid"></div>
+    </div>
+    <div id="variationPanel" class="variation-panel variation-hidden">
+      <span class="variation-kicker">TEXTURA DA PEÃ‡A</span>
+      <strong id="variationPiece">Camiseta 1</strong>
+      <div class="variation-row"><span>VariaÃ§Ã£o</span><b id="variationValue">ORIGINAL</b></div>
+      <input id="variationRange" class="variation-range" type="range" min="0" max="1" value="0" step="1">
+      <div class="variation-scale"><span>ORIGINAL</span><span id="variationMax">1</span></div>
+      <p>Arraste para trocar somente a estampa/textura desta peÃ§a.</p>
+    </div>
+  </div>
+
+  <aside class="steps">
+    <button class="hex active" data-stage="1">â—</button>
+    <button class="hex disabled" data-stage="2">â™§</button>
+    <button class="hex disabled" data-stage="3">â™œ</button>
+  </aside>
+  <button id="createBtn" class="continue">CONTINUAR</button><button id="backBtn" class="back">VOLTAR</button><div id="error" class="error"></div>
+</section>
+<script src="app.js?v=profile6"></script></body></html>

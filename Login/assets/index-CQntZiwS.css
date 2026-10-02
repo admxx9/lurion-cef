@@ -1,0 +1,273 @@
+@import "https://fonts.cdnfonts.com/css/gunplay";
+@import "https://fonts.cdnfonts.com/css/impact";
+@import "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap";
+
+* {
+  margin:0;
+  padding:0
+}
+
+.body {
+  position:relative;
+  display:flex;
+  flex-direction:row;
+  width:100vw;
+  height:100vh;
+  background-color:#08080a;
+  pointer-events:all
+}
+
+.body>img {
+  height:100vh;
+  width:50vw;
+  position:absolute;
+  left:47px
+}
+
+.background-left {
+  background-image:url(./background-CzJgJxrH.png);
+  background-repeat:no-repeat;
+  background-size:cover;
+  width:35%;
+  height:100%;
+  pointer-events:all
+}
+
+.background-right {
+  display:flex;
+  flex-direction:column;
+  width:60%;
+  pointer-events:all
+}
+
+.background-right>header {
+  width:100%;
+  display:flex;
+  flex-direction:row;
+  justify-content:right;
+  padding-top:26px;
+  padding-right:38px
+}
+
+.background-right>header>hr {
+  margin-left:8px;
+  margin-right:8px
+}
+
+.background-right>header>.option {
+  color:#fff;
+  text-transform:uppercase;
+  font-size:13px;
+  font-weight:600;
+  font-family:Inter,sans-serif
+}
+
+.background-right>header>.option:hover {
+  cursor:pointer
+}
+
+.background-right>header>.active {
+  color:#d0af51
+}
+
+.background-right>main {
+  position:absolute;
+  left:55vw;
+  padding-top:90px;
+  height:80vh;
+  pointer-events:all
+}
+
+.background-right>main>.character {
+  color:#d0af51;
+  font-family:Gunplay,sans-serif;
+  text-transform:uppercase;
+  font-size:1.75vw;
+  font-weight:400
+}
+
+.background-right>main>h1 {
+  font-family:Impact,sans-serif;
+  color:#fff;
+  font-size:4vw;
+  text-transform:uppercase;
+  font-weight:400
+}
+
+.background-right>main>.description {
+  color:#fff;
+  font-size:1.25vw;
+  font-family:Inter,sans-serif;
+  font-weight:400
+}
+
+.background-right>main>.form {
+  width:40vw;
+  display:flex;
+  flex-direction:column;
+  padding-top:40px;
+  padding-left:6px;
+  gap:19px
+}
+
+.background-right>main>.form>.input {
+  display:flex;
+  flex-direction:row
+}
+
+.background-right>main>.form>.input>img {
+  width:40px;
+  height:57px
+}
+
+.background-right>main>.form>.input>.input {
+  width:440px;
+  height:63px;
+  background-image:url("data:image/svg+xml,%3csvg%20width='442'%20height='63'%20viewBox='0%200%20442%2063'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M5.60648%205.2861L14.2128%205.20463L5.525%2013.8924L5.60648%205.2861Z'%20fill='%23E5BA40'/%3e%3cpath%20d='M6.28952%2054.6841L6.20804%2046.0777L14.8958%2054.7655L6.28952%2054.6841Z'%20fill='%23E5BA40'/%3e%3cpath%20d='M436.656%206.00095L428.05%205.91947L436.737%2014.6073L436.656%206.00095Z'%20fill='%23E5BA40'/%3e%3cpath%20d='M436.973%2054.3989L437.054%2045.7926L428.367%2054.4804L436.973%2054.3989Z'%20fill='%23E5BA40'/%3e%3cg%20filter='url(%23filter0_d_35_50)'%3e%3crect%20x='5.77368'%20y='5.48511'%20width='431'%20height='49'%20stroke='%23828282'%20shape-rendering='crispEdges'/%3e%3c/g%3e%3cdefs%3e%3cfilter%20id='filter0_d_35_50'%20x='1.27368'%20y='4.98511'%20width='440'%20height='58'%20filterUnits='userSpaceOnUse'%20color-interpolation-filters='sRGB'%3e%3cfeFlood%20flood-opacity='0'%20result='BackgroundImageFix'/%3e%3cfeColorMatrix%20in='SourceAlpha'%20type='matrix'%20values='0%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%20127%200'%20result='hardAlpha'/%3e%3cfeOffset%20dy='4'/%3e%3cfeGaussianBlur%20stdDeviation='2'/%3e%3cfeComposite%20in2='hardAlpha'%20operator='out'/%3e%3cfeColorMatrix%20type='matrix'%20values='0%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200.25%200'/%3e%3cfeBlend%20mode='normal'%20in2='BackgroundImageFix'%20result='effect1_dropShadow_35_50'/%3e%3cfeBlend%20mode='normal'%20in='SourceGraphic'%20in2='effect1_dropShadow_35_50'%20result='shape'/%3e%3c/filter%3e%3c/defs%3e%3c/svg%3e");
+  background-size:contain;
+  background-position:bottom;
+  background-repeat:no-repeat
+}
+
+.background-right>main>.form>.input>.input>.label {
+  position:relative;
+  top:17px;
+  left:17px;
+  width:50%;
+  color:#737375;
+  font-family:Inter,sans-serif;
+  font-weight:300;
+  font-size:9px
+}
+
+.background-right>main>.form>.input>.input>input {
+  position:relative;
+  top:17px;
+  left:17px;
+  background:transparent;
+  border:none;
+  font-family:Inter,sans-serif;
+  font-weight:400;
+  font-size:12px;
+  color:#fff;
+  width:50%
+}
+
+.background-right>main>.form>.input>.input>input::placeholder {
+  font-family:Inter,sans-serif;
+  font-weight:400;
+  font-size:12px;
+  color:#fff
+}
+
+.background-right>main>.form>.input>.input>input:focus-within {
+  outline:0
+}
+
+.background-right>main>.forgot {
+  padding-top:10px;
+  display:flex;
+  flex-direction:row;
+  justify-content:right;
+  width:88%
+}
+
+.background-right>main>.forgot>span {
+  color:#e5ba40;
+  font-family:Inter,sans-serif;
+  font-weight:400;
+  font-size:1vw;
+  cursor:pointer
+}
+
+.background-right>main>button {
+  margin-top:35px;
+  border:none;
+  width:40vw;
+  height:49px;
+  background-color:#e5ba40;
+  border-radius:10px;
+  color:#fff;
+  font-family:Inter,sans-serif;
+  font-weight:700;
+  font-size:19px;
+  cursor:pointer
+}
+
+@keyframes slideInRight {
+  0% {
+    transform:translate(10px);
+    opacity:0
+  }
+
+to {
+    transform:translate(0);
+    opacity:1
+  }
+}
+
+@keyframes slideOutRight {
+  0% {
+    transform:translate(0);
+    opacity:1
+  }
+
+to {
+    transform:translate(10px);
+    opacity:0
+  }
+}
+
+.notification {
+  display:flex;
+  flex-direction:row;
+  position:absolute;
+  right:25px;
+  bottom:0;
+  background-color:#2d2d2d;
+  border:#E5BA40 solid 1px;
+  border-bottom-left-radius:11px;
+  border-top-left-radius:11px;
+  width:230px;
+  height:63px;
+  opacity:0
+}
+
+.notification.hide {
+  animation:slideOutRight .5s ease forwards
+}
+
+.notification.show {
+  animation:slideInRight .5s ease forwards
+}
+
+.background-right>main>.notification>img {
+  display:flex;
+  position:relative;
+  top:17px;
+  left:18px;
+  width:30px;
+  height:30px
+}
+
+.background-right>main>.notification>div {
+  position:relative;
+  top:17px;
+  left:27px;
+  display:flex;
+  flex-direction:column
+}
+
+.background-right>main>.notification>div>.title {
+  color:#fff;
+  font-family:Inter,sans-serif;
+  font-size:13px;
+  font-weight:900
+}
+
+.background-right>main>.notification>div>span {
+  color:#fff;
+  font-family:Inter,sans-serif;
+  font-size:12px;
+  font-weight:200
+}
