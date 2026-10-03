@@ -313,3 +313,18 @@ if (document.readyState === 'loading') {
 } else {
   lurionNativeMarkerReady();
 }
+
+
+/* LURION HUD ready handshake */
+function lurionHudReadyNotify(){
+  try {
+    if (typeof cef !== 'undefined' && cef && typeof cef.emit === 'function') {
+      cef.emit('hud:ready');
+    }
+  } catch (_) {}
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => setTimeout(lurionHudReadyNotify, 80), { once: true });
+} else {
+  setTimeout(lurionHudReadyNotify, 80);
+}
