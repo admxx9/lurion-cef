@@ -585,6 +585,8 @@ function lurionBigMapRequestDraw() {
   lurionBigMap.raf = requestAnimationFrame(lurionBigMapDraw);
 }
 function lurionBigMapOpen() {
+  // Desativado: F2/mapa pertencem exclusivamente ao LurionRadar nativo.
+  return;
   if (lurionBigMap.open) return;
   const root = lurionBigMapEnsureUI();
   lurionBigMap.open = true;
@@ -655,7 +657,7 @@ function lurionHideOtherNativeHud() {
 }
 
 window.lurionRadarVehicleUpdate = function (inVehicle, x, y, heading, speed) {
-  const showNativeRadar = Number(inVehicle) === 1;
+  const showNativeRadar = false; // radar GTA/CEF desativado; LurionRadar.dll assume tudo.
 
   // X/Y continuam atualizados a pe exclusivamente para o F2/GPS grande.
   lurionRadar.x = Number(x) || 0;
@@ -700,15 +702,8 @@ function lurionBigMapMarkCenter() {
 }
 
 window.addEventListener('keydown', (e) => {
-  const isF2 = e.key === 'F2' || e.code === 'F2' || e.keyCode === 113;
-  if (isF2) {
-    if (e.repeat) return;
-    e.preventDefault();
-    e.stopPropagation();
-    lurionBigMapToggle();
-    return;
-  }
-
+  // F2 pertence exclusivamente ao radar MoonLoader (FiveMRadarSA.lua).
+  // O HUD CEF nao abre mais o mapa grande por tecla.
   if (!lurionBigMap.open) return;
 
   let handled = true;
