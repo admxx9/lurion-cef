@@ -131,7 +131,7 @@ function setStage(n){
   el.classList.toggle("active",i===n-1);
   el.classList.toggle("disabled",i!==n-1);
  });
- $("createBtn").textContent=n===3?"CRIAR PERSONAGEM":"CONTINUAR";
+ $("createBtn").textContent=n===1?"CRIAR PERSONAGEM":(n===3?"CRIAR PERSONAGEM":"CONTINUAR");
  $("error").textContent="";
  if(n===2){renderParents();emit("character:stage","parent");}
  if(n===3){renderClothes();emit("character:stage","tshirt");}
@@ -267,8 +267,8 @@ $("backBtn").onclick=()=>{
  setStage(state.stage-1);
 };
 $("createBtn").onclick=()=>{
- if(state.stage===1){if(validateStage1())setStage(2);return}
- if(state.stage===2){setStage(3);return}
+ // Temporario: parentesco e roupas desativados. Dados basicos criam o personagem direto.
+ if(state.stage===1){if(validateStage1())finishCharacter();return}
  finishCharacter();
 };
 $("playBtn").onclick=()=>{
