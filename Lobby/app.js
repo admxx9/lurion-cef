@@ -1,7 +1,7 @@
 const state={
   username:"Jogador",characters:[],selected:null,gender:"masculine",
   stage:1,parent:0,tone:0,category:"tshirt",
-  clothes:{tshirt:1,pants:1,feet:1,accessory:0},
+  clothes:{tshirt:0,pants:1,feet:0,accessory:0},
   variants:{tshirt:0,pants:0,feet:0,accessory:0}
 };
 const $=id=>document.getElementById(id);
@@ -111,7 +111,7 @@ function selectCharacter(id){
 
 function showCreator(){
  state.stage=1; state.parent=0; state.tone=0; state.category="tshirt";
- state.clothes={tshirt:1,pants:1,feet:1,accessory:0};
+ state.clothes={tshirt:0,pants:1,feet:0,accessory:0};
  state.variants={tshirt:0,pants:0,feet:0,accessory:0};
  $("lobbyView").classList.add("hidden");
  $("createView").classList.remove("hidden");
@@ -149,7 +149,7 @@ function setGender(g){
  $("male").classList.toggle("active",g==="masculine");
  $("female").classList.toggle("active",g==="feminine");
  $("docGender").textContent=g==="masculine"?"Masculino":"Feminino";
- state.clothes={tshirt:1,pants:1,feet:1,accessory:0};
+ state.clothes={tshirt:0,pants:1,feet:0,accessory:0};
  state.variants={tshirt:0,pants:0,feet:0,accessory:0};
  emit("character:gender",g);
 }
@@ -161,10 +161,13 @@ function syncDoc(){
 function renderParents(){
  const grid=$("parentsGrid");grid.innerHTML="";
  parents.forEach((name,index)=>{
+  const locked=index!==0;
   const b=document.createElement("button");
-  b.className="parent-card"+(state.parent===index?" active":"");
-  b.innerHTML='<img src="assets/creator/parents/'+name+'.png"><span>'+name+'</span>';
-  b.onclick=()=>{state.parent=index;renderParents();emit("character:parent",String(index)+"|"+String(state.tone));};
+  b.type="button";
+  b.disabled=locked;
+  b.className="parent-card"+(state.parent===index?" active":"")+(locked?" locked":"");
+  b.innerHTML='<img src="assets/creator/parents/'+name+'.png"><span>'+name+'</span>'+(locked?'<div class="parent-lock"><span class="lock-icon">🔒</span></div>':'');
+  if(!locked)b.onclick=()=>{state.parent=0;renderParents();emit("character:parent","0|"+String(state.tone));};
   grid.appendChild(b);
  });
 }
