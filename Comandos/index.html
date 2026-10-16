@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lurion — Comandos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <section class="box is-on" id="box" role="dialog" aria-labelledby="title">
+    <header class="box__head">
+      <img class="logo" src="./lurion-logo.png" alt="Lurion" />
+      <p class="beta">Beta</p>
+      <h1 id="title">comandos</h1>
+    </header>
+
+    <ul class="cmds" id="cmds">
+      <li>
+        <code>/rep</code> <span class="alias">ou /reparar</span>
+        <p>Repara o carro (vida cheia)</p>
+      </li>
+      <li>
+        <code>/lob</code>
+        <p>Teleporta para o ponto do lobby.</p>
+      </li>
+      <li>
+        <code>/skin</code> <span class="arg">[id]</span>
+        <p>Troca a sua skin (0–311).</p>
+      </li>
+      <li>
+        <code>/arma</code> <span class="arg">[id] [muni]</span>
+        <p>Pega arma. M4 com 500.</p>
+      </li>
+      <li>
+        <code>/car</code> <span class="arg">[modelo]</span>
+        <p>Cria um veiculo e te coloca nele.</p>
+      </li>
+      <li>
+        <code>/motor</code>
+        <p>Liga ou desliga o motor do veiculo.</p>
+      </li>
+      <li>
+        <code>/farol</code>
+        <p>Liga ou desliga o farol.</p>
+      </li>
+      <li>
+        <code>/trancar</code>
+        <p>Tranca o veiculo proximo (com chave).</p>
+      </li>
+      <li>
+        <code>/destrancar</code>
+        <p>Destranca o veiculo proximo (com chave).</p>
+      </li>
+      <li>
+        <code>/comandos</code>
+        <p>Abre esta caixa de comandos.</p>
+      </li>
+    </ul>
+
+    <footer class="box__foot">
+      <button type="button" class="btn" id="btnClose">JOGAR</button>
+    </footer>
+  </section>
+
+  <script src="./app.js"></script>
+</body>
+</html>
