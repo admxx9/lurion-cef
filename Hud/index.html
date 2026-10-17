@@ -1,35 +1,20 @@
 <html lang="pt-br">
 	<head>
 		<meta charset="UTF-8" />
-		<title>by @artturalvaro</title>
-		<link rel="stylesheet" href="style.css?v=native-radar2" />
+		<title>Lurion HUD</title>
+		<link rel="stylesheet" href="style.css?v=fast1" />
 		<link rel="stylesheet" href="my-loading-bar.css" />
 		<link rel="stylesheet" type="text/css" href="dist/loading-bar.min.css">
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-		<link href="https://fonts.googleapis.com/css2?family=Jura:wght@600&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<link rel="preconnect" href="https://fonts.gstatic.com">
-		<!-- <link href="https://fonts.googleapis.com/css2?family=Rubik:ital@1&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet"> -->
-
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-		
-		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
-		<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-		<script src="jquery.js?v=hudready1"></script>
-		<script src="radar.js?v=native-radar2"></script>
-		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
+		<!-- local only: remove CDN jquery/fonts (lag no CEF via GitHub Pages) -->
+		<script src="jquery.js?v=fast1"></script>
+		<script src="radar.js?v=fast1"></script>
 		<script type="text/javascript" src="dist/loading-bar.js"></script>
-		<script src="https://code.jquery.com/jquery-3.6.1.min.js"
-        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+		<style>.fa-solid,.fa-map,.fa-walkie-talkie,.fa-microphone,.fa-diamond,.fa-clock,.fa-droplet,.fIconSede,.fIconFome,.IconCima{display:none!important}</style>
 	</head>
 	<body>
 <div id="lurionEntryFade" class="lurion-entry-fade"></div>
 <div id="displayHud">
-			<img class='logo' src="./images/lurion-logo.png">
+			<img class='logo' src="./images/lurion-logo.webp?v=fast1" onerror="this.onerror=null;this.src='./images/lurion-logo.png'">
 			
 			<div class="infos">
 				<div class="item-cima" style="display: none;" id="safezone"><i class="fa-solid fa-map IconCima"></i><ss>Safezone</ss></div>

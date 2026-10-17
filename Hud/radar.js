@@ -418,7 +418,7 @@ function lurionBigMapEnsureUI() {
   root = document.createElement('div');
   root.id = 'lurion-bigmap';
   root.innerHTML = `
-    <img id="lurion-bigmap-map" class="lurion-bigmap-map" src="radar/map-pastgen-4k.jpg?v=pastgen1" alt="">
+    <img id="lurion-bigmap-map" class="lurion-bigmap-map" src="radar/map-pastgen-4k.jpg?v=fast1" alt="">
     <canvas id="lurion-bigmap-canvas"></canvas>
     <img class="lurion-bigmap-cross" src="radar/cross.png" alt="">
     <div class="lurion-bigmap-top">

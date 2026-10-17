@@ -10,8 +10,8 @@
 .status{position:fixed;right:4.8vw;bottom:4.1vh;background:rgba(5,5,5,.78);color:#fff;padding:8px 12px;font-size:11px;font-weight:600;z-index:10;display:flex;align-items:center;gap:9px}.spin{width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
 @media(max-width:900px){.music{right:28px;bottom:98px;width:205px}.status{right:28px;bottom:28px}}
 </style></head><body>
-<video id="bgVideo" autoplay muted loop playsinline preload="auto"><source src="loadscren.mp4" type="video/mp4"></video>
-<audio id="music" autoplay loop preload="auto"><source src="Lurion.mp3?v=musicfix2" type="audio/mpeg"></audio>
+<video id="bgVideo" autoplay muted loop playsinline preload="metadata"><source src="loadscren.mp4?v=fast1" type="video/mp4"></video>
+<audio id="music" autoplay loop preload="metadata"><source src="Lurion.mp3?v=fast1" type="audio/mpeg"></audio>
 <div class="music"><div class="title">Lurion</div><div class="song-progress"><div id="songFill" class="song-fill"></div></div><div class="controls">
 <button class="btn disabled" disabled><svg viewBox="0 0 24 24"><path d="M6 5h2v14H6V5zm3 7 9-6v12l-9-6z"/></svg></button>
 <button id="playPause" class="btn play"><svg id="pauseI" viewBox="0 0 24 24"><path d="M7 5h4v14H7V5zm6 0h4v14h-4V5z"/></svg><svg id="playI" viewBox="0 0 24 24" style="display:none"><path d="M8 5v14l11-7z"/></svg></button>
