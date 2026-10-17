@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lurion Notify</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --panel: rgba(0, 0, 0, 0.78);
+      --card: rgba(0, 0, 0, 0.62);
+      --line: rgba(255, 255, 255, 0.1);
+      --text: #f5f5f7;
+      --muted: rgba(230, 230, 240, 0.75);
+      --lilac: #c9a6ff;
+      --radius: 14px;
+      --font: "Outfit", sans-serif;
+    }
+    html, body {
+      margin: 0; padding: 0; width: 100%; height: 100%;
+      overflow: hidden; background: transparent !important;
+      pointer-events: none; font-family: var(--font); color: var(--text);
+    }
+    .notifications-container {
+      position: fixed; top: 16vh; right: 2.5rem; z-index: 9999;
+      display: flex; flex-direction: column-reverse; gap: 10px;
+      max-height: calc(5 * 5.5rem); width: 18rem;
+      overflow: visible; pointer-events: none;
+    }
+    .lp-bottom {
+      position: fixed; left: 0; right: 0; bottom: 0; height: 22vh;
+      z-index: 10000; pointer-events: none; opacity: 0;
+      transition: opacity .35s ease;
+      display: flex; align-items: flex-end; justify-content: center;
+      padding-bottom: 4.5vh;
+      background: url("./assets/aw_ui_notify_shadow.png") center bottom / 100% auto no-repeat;
+    }
+    .lp-bottom.on { opacity: 1; }
+    .lp-bottom-inner {
+      display: flex; align-items: center; gap: 14px;
+      min-width: 320px; max-width: 520px; margin-bottom: 8px;
+    }
+    .lp-icon-wrap {
+      position: relative; width: 49px; height: 49px; flex-shrink: 0;
+    }
+    .lp-icon-wrap img.warning { width: 49px; height: 49px; display: block; }
+    .lp-icon-wrap img.arrow {
+      position: absolute; left: 78px; top: 16px; width: 10px; height: 17px;
+    }
+    .lp-texts { display: flex; flex-direction: column; gap: 2px; padding-left: 28px; }
+    .lp-title { font-size: 15px; font-weight: 600; color: #fff; }
+    .lp-msg { font-size: 12px; font-weight: 400; color: rgba(255,255,255,.8); }
+    .notification {
+      position: relative; display: flex; align-items: center;
+      padding: 0.85rem; border-radius: var(--radius);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+      background: var(--panel); color: var(--text); width: 100%;
+      max-height: 5.5rem; overflow: hidden; border: 1px solid var(--line);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      transition: opacity 0.18s ease-in-out, transform 0.18s ease-in-out;
+      pointer-events: none;
+    }
+    .notification.fade-out { opacity: 0; transform: translateY(10px); }
+    .notification .icon-container {
+      display: flex; align-items: center; justify-content: center;
+      padding: 7px; border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--card); flex-shrink: 0;
+    }
+    .success .icon-container { border-color: rgba(56, 161, 105, 0.35); }
+    .error .icon-container { border-color: rgba(229, 62, 62, 0.35); }
+    .info .icon-container { border-color: rgba(201, 166, 255, 0.4); }
+    .warning .icon-container { border-color: rgba(245, 158, 11, 0.45); }
+    .notification .icon { width: 20px; height: 20px; display: block; }
+    .success .icon { color: #38a169; stroke: #38a169; }
+    .error .icon { color: #e53e3e; stroke: #e53e3e; }
+    .info .icon { color: var(--lilac); stroke: var(--lilac); }
+    .warning .icon { color: #f59e0b; stroke: #f59e0b; }
+    .notification-content {
+      display: flex; flex-direction: column;
+      margin-left: 0.85rem; margin-bottom: 0.2rem; min-width: 0;
+    }
+    .notification-title { font-weight: 600; font-size: 1.02rem; letter-spacing: 0.01em; }
+    .notification-description { font-size: 0.8rem; color: var(--muted); }
+    .progress-bar-container {
+      position: absolute; bottom: 0; left: 0; width: 100%; height: 3px;
+      overflow: hidden; background: rgba(255, 255, 255, 0.12);
+    }
+    .progress-bar {
+      height: 100%; width: 100%; border-radius: 8px;
+      transform-origin: left center;
+      animation: lurion-progress linear forwards;
+    }
+    @keyframes lurion-progress {
+      from { transform: scaleX(1); }
+      to { transform: scaleX(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="notifications-container" id="notifications"></div>
+  <div class="lp-bottom" id="bottomAlert">
+    <div class="lp-bottom-inner">
+      <div class="lp-icon-wrap">
+        <img class="warning" src="./assets/aw_ui_notify_warning.png" alt="" />
+        <img class="arrow" src="./assets/aw_ui_notify_arrow.png" alt="" />
+      </div>
+      <div class="lp-texts">
+        <div class="lp-title" id="bottomTitle">Gas Station</div>
+        <div class="lp-msg" id="bottomMsg"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var container = document.getElementById("notifications");
+      var queue = [];
+      var uid = 1;
+
+      function iconSvg(type) {
+        if (type === "success") {
+          return '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+        }
+        if (type === "error") {
+          return '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>';
+        }
+        return '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>';
+      }
+
+      function progressColor(type) {
+        if (type === "success") return "rgba(56, 161, 105, 0.75)";
+        if (type === "error") return "rgba(229, 62, 62, 0.75)";
+        if (type === "warning") return "rgba(245, 158, 11, 0.85)";
+        return "rgba(168, 56, 248, 0.75)";
+      }
+
+      function removeNotification(id) {
+        queue = queue.filter(function (n) { return n.id !== id; });
+        var el = document.getElementById("notif-" + id);
+        if (el) el.remove();
+      }
+
+      function dismissNotification(entry) {
+        if (!entry || entry.gone) return;
+        entry.gone = true;
+        var el = document.getElementById("notif-" + entry.id);
+        if (!el) {
+          removeNotification(entry.id);
+          return;
+        }
+        el.classList.add("fade-out");
+        setTimeout(function () { removeNotification(entry.id); }, 200);
+      }
+
+      function sweep() {
+        var now = Date.now();
+        for (var i = queue.length - 1; i >= 0; i--) {
+          var n = queue[i];
+          if (!n.gone && now >= n.expireAt) dismissNotification(n);
+        }
+      }
+      setInterval(sweep, 200);
+
+      function showNotification(opts) {
+        if (!opts) return;
+        var id = uid++;
+        var duration = Number(opts.duration);
+        if (!isFinite(duration) || duration < 800) duration = 5000;
+        if (duration > 20000) duration = 20000;
+
+        var type = String(opts.type || "info");
+        if (type === "atencao" || type === "attention") type = "warning";
+        if (type !== "success" && type !== "error" && type !== "info" && type !== "warning") type = "info";
+
+        var title = String(opts.title || "");
+        var description = String(opts.description || "");
+        if (!title && !description) return;
+
+        while (queue.length >= 5) {
+          dismissNotification(queue[0]);
+          if (queue[0] && !queue[0].gone) removeNotification(queue[0].id);
+        }
+
+        var entry = { id: id, type: type, expireAt: Date.now() + duration, gone: false };
+        queue.push(entry);
+
+        var el = document.createElement("div");
+        el.className = "notification " + type;
+        el.id = "notif-" + id;
+        el.innerHTML =
+          '<div class="icon-container">' + iconSvg(type) + "</div>" +
+          '<div class="notification-content">' +
+            '<span class="notification-title"></span>' +
+            '<span class="notification-description"></span>' +
+          "</div>" +
+          '<div class="progress-bar-container"><div class="progress-bar"></div></div>';
+
+        el.querySelector(".notification-title").textContent = title;
+        el.querySelector(".notification-description").textContent = description;
+        var bar = el.querySelector(".progress-bar");
+        bar.style.backgroundColor = progressColor(type);
+        // entra no DOM ANTES de animar — senao a barra nao aparece no CEF
+        container.appendChild(el);
+        bar.style.animation = "none";
+        void bar.offsetWidth;
+        bar.style.animation = "lurion-progress " + duration + "ms linear forwards";
+      }
+
+      function normalizeArgs(args) {
+        if (args.length === 1 && Array.isArray(args[0])) return args[0];
+        if (args.length === 1 && args[0] && typeof args[0] === "object" && !Array.isArray(args[0])) {
+          var o = args[0];
+          if (o.type || o.title) return [o.type, o.title, o.description || o.desc || "", o.duration];
+          if (Array.isArray(o.data)) return o.data;
+        }
+        return args;
+      }
+
+      function onShow() {
+        var args = normalizeArgs(Array.prototype.slice.call(arguments));
+        if (args.length >= 2 && (typeof args[0] === "string" || typeof args[0] === "number")) {
+          showNotification({
+            type: String(args[0]),
+            title: String(args[1] || ""),
+            description: String(args[2] || ""),
+            duration: Number(args[3]) || 5000
+          });
+          return;
+        }
+        if (args[0] && typeof args[0] === "object") showNotification(args[0]);
+      }
+
+      var bottomEl = document.getElementById("bottomAlert");
+      var bottomTitle = document.getElementById("bottomTitle");
+      var bottomMsg = document.getElementById("bottomMsg");
+      var bottomUntil = 0;
+      function showBottom(titleOrMsg, msgOrDur, maybeDur) {
+        if (!bottomEl) return;
+        var title = "Aviso";
+        var msg = "";
+        var duration = 4500;
+        if (typeof msgOrDur === "string" || (msgOrDur != null && arguments.length >= 2 && typeof maybeDur !== "undefined")) {
+          title = String(titleOrMsg || "Aviso");
+          msg = String(msgOrDur || "");
+          duration = Number(maybeDur) || 4500;
+        } else {
+          msg = String(titleOrMsg || "");
+          duration = Number(msgOrDur) || 4500;
+        }
+        bottomTitle.textContent = title;
+        bottomMsg.textContent = msg;
+        bottomEl.className = "lp-bottom on";
+        bottomUntil = Date.now() + duration;
+      }
+      setInterval(function () {
+        if (bottomUntil && Date.now() >= bottomUntil) {
+          bottomUntil = 0;
+          if (bottomEl) bottomEl.className = "lp-bottom";
+        }
+      }, 200);
+
+      function onBottom() {
+        var a = normalizeArgs(Array.prototype.slice.call(arguments));
+        if (a.length >= 2 && typeof a[1] === "string") showBottom(a[0], a[1], a[2]);
+        else showBottom(a[0], a[1]);
+      }
+
+      try {
+        if (typeof cef !== "undefined" && cef && typeof cef.on === "function") {
+          cef.on("notify:show", onShow);
+          cef.on("notify:bottom", onBottom);
+          cef.on("notify:clear", function () {
+            while (queue.length) removeNotification(queue[0].id);
+            if (bottomEl) bottomEl.className = "lp-bottom";
+            bottomUntil = 0;
+          });
+        }
+      } catch (e) {}
+
+      window.addEventListener("message", function (ev) {
+        var d = ev && ev.data;
+        if (!d) return;
+        if (d.action === "triggerNotification" || d.eventName === "notify:show" || d.type === "notify:show") {
+          var payload = d.data || d.payload || d;
+          if (payload && payload.data) payload = payload.data;
+          if (Array.isArray(payload)) onShow.apply(null, payload);
+          else showNotification(payload);
+        }
+        if (d.eventName === "notify:bottom" || d.action === "notify:bottom") {
+          var b = d.data || d.payload || d;
+          if (Array.isArray(b)) onBottom.apply(null, b);
+          else onBottom(b.message || b.msg || b, b.duration);
+        }
+      });
+
+      window.__lurionNotify = showNotification;
+      window.__lurionBottom = showBottom;
+      console.log("[lurion-notify] ready v14");
+    })();
+  </script>
+</body>
+</html>

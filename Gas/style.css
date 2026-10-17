@@ -1,0 +1,114 @@
+html, body {
+  margin: 0; padding: 0; width: 100%; height: 100%;
+  overflow: hidden; background: transparent !important;
+  font-family: "Outfit", sans-serif; color: #fff;
+}
+* { box-sizing: border-box; user-select: none; }
+#root { position: fixed; inset: 0; display: none; }
+#root.on { display: block; }
+.dim {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,.72);
+}
+.vignette {
+  position: absolute; inset: 0;
+  background: url("./assets/vignette.png") center/cover no-repeat;
+  opacity: .9; pointer-events: none;
+}
+.station {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(420px, 92vw);
+  z-index: 2;
+}
+.brand {
+  margin: 0; text-align: center;
+  font-family: "Rajdhani", "Outfit", sans-serif;
+  font-size: 42px; font-weight: 700; letter-spacing: .04em;
+}
+.city { margin: 0 0 28px; text-align: center; opacity: .85; font-size: 15px; }
+.tops { display: flex; gap: 14px; margin-bottom: 22px; }
+.top {
+  flex: 1; height: 38px; border-radius: 3px; border: 1px solid rgba(255,255,255,.2);
+  background: rgba(255,255,255,.08); color: rgba(255,255,255,.4);
+  font: inherit; cursor: pointer;
+}
+.top.on {
+  color: #fff; border-color: #FF004E;
+  background: rgba(255,0,78,.35);
+}
+.label { margin: 0 0 10px; font-size: 13px; opacity: .85; }
+.percents { display: flex; gap: 14px; margin-bottom: 22px; }
+.mid {
+  flex: 1; height: 88px; border-radius: 5px;
+  border: 1px solid rgba(255,255,255,.35);
+  background: rgba(255,255,255,.04);
+  color: rgba(255,255,255,.35); cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  font: inherit;
+}
+.mid strong { font-size: 20px; font-weight: 700; }
+.mid span { font-size: 11px; }
+.mid.on {
+  color: #fff; border-color: #FF004E;
+  background: rgba(255,0,78,.35);
+}
+.liters-row { display: flex; justify-content: space-between; align-items: baseline; }
+.liters-count { margin: 0; font-size: 13px; }
+.liters-count .dimt { color: #3F3F40; }
+.bars {
+  display: flex; gap: 6px; margin: 10px 0 22px; flex-wrap: nowrap;
+}
+.bars i {
+  width: 6.3px; height: 42px; border-radius: 1px;
+  background: rgba(255,255,255,.1); flex: 0 0 auto;
+}
+.bars i.on { background: #FF004E; }
+.infos { display: flex; gap: 18px; margin-bottom: 18px; }
+.info {
+  flex: 1; height: 87px; border-radius: 3px;
+  background: rgba(255,255,255,.1);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+}
+.info strong { font-size: 22px; }
+.info span { font-size: 12px; opacity: .45; }
+.total-row {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 18px; font-size: 14px;
+}
+.total-row span { opacity: .35; }
+.total-row strong { font-size: 22px; font-weight: 600; }
+.checkout {
+  position: relative; width: 100%; height: 52px; border: 0;
+  background: transparent; color: #fff; cursor: pointer; font: inherit;
+  font-size: 16px; font-weight: 500;
+}
+.checkout img {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 140%; max-width: 534px; height: auto; pointer-events: none; opacity: .9;
+}
+.checkout span { position: relative; z-index: 1; }
+.help {
+  margin: 14px 0 0; text-align: center;
+  font-size: 11px; color: rgba(255,255,255,.35);
+}
+.fill-status {
+  display: none; margin-top: 10px; text-align: center;
+  font-size: 13px; color: #ff4d7d; letter-spacing: .02em;
+}
+.fill-status.on { display: block; }
+.fill-status.warn { color: #ffb020; }
+#root.filling .mid, #root.filling .top { pointer-events: none; opacity: .45; }
+#root.filling .checkout { opacity: .85; }
+.checkout:disabled { cursor: wait; }
+
+.fill-status {
+  display: none; margin-top: 10px; text-align: center;
+  font-size: 13px; color: #ff4d7d; letter-spacing: .02em;
+}
+.fill-status.on { display: block; }
+.fill-status.warn { color: #ffb020; }
+#root.filling .mid, #root.filling .top { pointer-events: none; opacity: .45; }
+#root.filling .checkout { opacity: .85; }
+.checkout:disabled { cursor: wait; }

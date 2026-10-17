@@ -47,25 +47,29 @@ cef.on(
     radarY,
     radarHeading
   ) => {
+    const on = Number(inVehicle) === 1 || inVehicle === true;
+    const spd = Math.max(0, Math.floor(Number(speed) || 0));
+    const hp = Number(engineHealth) || 0;
+    const gas = Number(fuel) || 0;
     setVehicleStats(
-      inVehicle,
-      engineHealth,
-      speed,
-      fuel,
-      nitroLevel,
-      seatbelt,
-      tyreState,
-      locked,
-      headlights
+      on,
+      hp,
+      spd,
+      gas,
+      Number(nitroLevel) || 0,
+      Number(seatbelt) || 0,
+      Number(tyreState) || 0,
+      Number(locked) || 0,
+      Number(headlights) || 0
     );
 
     if (typeof window.lurionRadarVehicleUpdate === 'function') {
       window.lurionRadarVehicleUpdate(
-        inVehicle,
-        radarX,
-        radarY,
-        radarHeading,
-        speed
+        on,
+        Number(radarX) || 0,
+        Number(radarY) || 0,
+        Number(radarHeading) || 0,
+        spd
       );
     }
   }

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pixel_gas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css?v=4" />
+</head>
+<body>
+  <div id="root" class="off">
+    <div class="dim"></div>
+    <div class="vignette"></div>
+    <div class="station">
+      <h1 class="brand">Conveniencia</h1>
+      <p class="city">Los Santos</p>
+
+      <div class="tops">
+        <button type="button" class="top" data-fuel="alcool">Alcool</button>
+        <button type="button" class="top on" data-fuel="gasolina">Gasolina</button>
+      </div>
+
+      <p class="label">Quantidade:</p>
+      <div class="percents">
+        <button type="button" class="mid" data-pct="25"><strong>25%</strong><span>Reabastecer</span></button>
+        <button type="button" class="mid" data-pct="50"><strong>50%</strong><span>Reabastecer</span></button>
+        <button type="button" class="mid" data-pct="75"><strong>75%</strong><span>Reabastecer</span></button>
+        <button type="button" class="mid" data-pct="100"><strong>100%</strong><span>Reabastecer</span></button>
+      </div>
+
+      <div class="liters-row">
+        <p class="label">Litros disponiveis:</p>
+        <p class="liters-count"><span id="selLiters">20</span><span class="dimt">/100</span></p>
+      </div>
+      <div class="bars" id="bars"></div>
+
+      <div class="infos">
+        <div class="info">
+          <strong id="priceL">$13.00</strong>
+          <span>Preco por litro</span>
+        </div>
+        <div class="info">
+          <strong id="inTank">40</strong>
+          <span>No Tanque</span>
+        </div>
+      </div>
+
+      <div class="total-row">
+        <span>Total hoje:</span>
+        <strong id="total">$260.00</strong>
+      </div>
+
+      <button type="button" class="checkout" id="btnBuy">
+        <img src="./assets/glow.png" alt="" />
+        <span id="btnBuyLabel">Checkout</span>
+      </button>
+      <div class="fill-status" id="fillStatus">Abastecendo...</div>
+      <p class="help">MOUSE 1 para interagir · BACKSPACE / ESC para voltar</p>
+    </div>
+  </div>
+  <script src="./app.js?v=4"></script>
+</body>
+</html>

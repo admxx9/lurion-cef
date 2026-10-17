@@ -1,0 +1,343 @@
+html, body {
+  margin: 0; padding: 0; width: 100%; height: 100%;
+  overflow: hidden; background: transparent !important;
+  font-family: "Outfit", sans-serif; color: #fff;
+}
+* { box-sizing: border-box; user-select: none; }
+
+/* ===== Hotbar rodape (mundo) ===== */
+.dock {
+  position: fixed; left: 50%; bottom: 3.2vh;
+  transform: translateX(-50%);
+  z-index: 5; display: none;
+  pointer-events: none;
+}
+.dock.on { display: block; }
+.dock-row {
+  display: grid; grid-template-columns: repeat(5, 55px); gap: 4px;
+}
+.dock .slot {
+  width: 55px; height: 55px;
+  background: url("./assets/slot_bg2.png") center/contain no-repeat;
+  opacity: .92;
+}
+.dock .slot.sel {
+  background-image: url("./assets/slot_bg2_glow.png");
+}
+.dock .slot .icon {
+  position: absolute; inset: 6px;
+  width: calc(100% - 12px); height: calc(100% - 12px);
+  object-fit: contain;
+}
+.dock .slot .num {
+  position: absolute; right: 2px; bottom: 2px;
+  min-width: 18px; height: 17px;
+  background: url("./assets/slot_numb.png") center/contain no-repeat;
+  color: #111; font-size: 9px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.dock .slot .stack {
+  position: absolute; left: 4px; top: 1px;
+  font-size: 9px; color: rgba(255,255,255,.8);
+}
+
+#root {
+  position: fixed; inset: 0; display: none;
+  opacity: 0; transition: opacity .35s ease;
+  z-index: 10;
+}
+#root.on { display: block; opacity: 1; }
+#root.closing { opacity: 0; }
+/* esconde dock enquanto inventario aberto */
+body.inv-open .dock { display: none !important; }
+
+.bg {
+  position: absolute; inset: 0;
+  /* LowPixel: fundo escuro sem tapar demais */
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.52), rgba(0,0,0,.62)),
+    url("./assets/background.png") center/cover no-repeat;
+  opacity: .88;
+  transition: opacity .4s ease;
+}
+#root.on .bg { opacity: .88; }
+
+.stage {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  gap: 28px;
+  pointer-events: none;
+}
+.stage > * { pointer-events: auto; }
+
+.main-col {
+  width: 360px;
+  display: flex; flex-direction: column;
+  transform: translateY(24px);
+  transition: transform .55s cubic-bezier(.2,.8,.2,1);
+}
+
+.hotbar-block {
+  margin-bottom: 28px;
+  transform: translateY(-40px); opacity: 0;
+  transition: transform .5s cubic-bezier(.2,.8,.2,1), opacity .45s ease;
+}
+#root.on .hotbar-block { transform: none; opacity: 1; }
+#root.closing .hotbar-block { transform: translateY(-80px); opacity: 0; }
+
+.hotbar-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 10px; min-height: 35px;
+}
+.hot-title { font-size: 11px; font-weight: 500; letter-spacing: .04em; flex-shrink: 0; }
+.hot-line { flex: 1; height: 1px; background: rgba(255,255,255,.14); }
+.tabs { display: flex; gap: 10px; flex-shrink: 0; }
+.tab {
+  position: relative; width: 35px; height: 35px;
+  border: 0; padding: 0; background: transparent; cursor: pointer;
+}
+.tab.disabled { cursor: default; opacity: .35; }
+.tab-bg, .tab-ico {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: contain; pointer-events: none;
+}
+.tab-bg { opacity: .08; }
+.tab.active .tab-bg, .tab:hover:not(.disabled) .tab-bg {
+  opacity: 1;
+  filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(1800%) hue-rotate(220deg) brightness(95%);
+}
+.tab-ico { opacity: .2; }
+.tab.active .tab-ico, .tab:hover:not(.disabled) .tab-ico { opacity: 1; }
+
+.hotbar, .grid, .trade-grid-mirror {
+  display: grid; gap: 5px; justify-content: start;
+}
+.hotbar { grid-template-columns: repeat(5, 68px); }
+.grid, .trade-grid-mirror {
+  grid-template-columns: repeat(5, 68px);
+  grid-auto-rows: 68px;
+  max-height: 420px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 4px;
+}
+.grid::-webkit-scrollbar, .trade-grid-mirror::-webkit-scrollbar { width: 4px; }
+.grid::-webkit-scrollbar-thumb, .trade-grid-mirror::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.2); border-radius: 4px;
+}
+.slot.ground-slot { cursor: pointer; }
+.slot.ground-slot:hover { filter: brightness(1.25); }
+
+.slot {
+  width: 68px; height: 68px; position: relative;
+  background: url("./assets/slot_bg.png") center/contain no-repeat;
+  cursor: grab;
+}
+.slot:active { cursor: grabbing; }
+.slot.drop-target { filter: brightness(1.35) saturate(1.2); }
+.slot .icon {
+  position: absolute; inset: 8px;
+  width: calc(100% - 16px); height: calc(100% - 16px);
+  object-fit: contain; pointer-events: none;
+}
+.slot .qty, .slot .num {
+  position: absolute; right: 2px; bottom: 2px;
+  min-width: 21px; height: 20px; padding: 0 3px;
+  background: url("./assets/slot_numb.png") center/contain no-repeat;
+  color: #111 !important; font-size: 10px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.bag-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.bag {
+  opacity: 0; transform: translateY(12px);
+  transition: opacity .35s ease .05s, transform .45s cubic-bezier(.2,.8,.2,1);
+  flex-shrink: 0;
+}
+#root.on .bag { opacity: 1; transform: none; }
+
+.bag-head {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  min-height: 22px;
+}
+.title { font-size: 15px; font-weight: 500; letter-spacing: .02em; }
+.weight { text-align: right; }
+.weight-row { font-size: 12px; line-height: 1; }
+.weight .muted { color: rgba(255,255,255,.35); margin-left: 2px; font-size: 11px; }
+.bars { display: flex; gap: 5px; justify-content: flex-end; margin-top: 6px; }
+.bars i { display: block; width: 35px; height: 3px; background: rgba(255,255,255,.18); }
+.bars i.on { background: #4f4fce; }
+.head-line {
+  height: 1px; width: 100%;
+  background: rgba(255,255,255,.12);
+  margin: 4px 0 10px;
+}
+
+/* Ponte quantidade + enviar entre as duas caixas */
+.trade-bridge {
+  display: none;
+  width: 120px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 198px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .4s ease, transform .5s cubic-bezier(.2,.8,.2,1);
+  pointer-events: auto;
+}
+#root.tab-trade .trade-bridge {
+  display: flex; opacity: 1; transform: none;
+}
+.bridge-label {
+  font-size: 11px; color: rgba(255,255,255,.55); letter-spacing: .04em;
+}
+.bridge-input {
+  width: 88px; height: 36px; border-radius: 7px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(0,0,0,.45); color: #fff;
+  text-align: center; font: inherit; font-size: 15px; font-weight: 600;
+  outline: none;
+}
+.bridge-input:focus { border-color: #4f4fce; }
+.bridge-send { width: 88px; height: 30px; }
+.bridge-hint {
+  font-size: 9px; color: rgba(255,255,255,.32); text-align: center; line-height: 1.3;
+}
+.trade-bridge.drop-hot .bridge-input,
+.trade-box.drop-hot {
+  outline: 1px solid rgba(79,79,206,.7);
+  filter: brightness(1.12);
+}
+
+/* Troca = mesma caixa do inventario, do lado, sem hotbar */
+.trade-box {
+  width: 360px;
+  display: none;
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity .45s ease, transform .55s cubic-bezier(.2,.8,.2,1);
+  margin-top: 198px;
+}
+#root.tab-trade .trade-box {
+  display: block; opacity: 1; transform: none;
+}
+.slot.selected {
+  filter: brightness(1.25) saturate(1.15);
+  box-shadow: inset 0 0 0 1px rgba(79,79,206,.85);
+}
+
+/* Painel de acao colado a DIREITA da box do inventario */
+.actions {
+  display: none;
+  width: 168px;
+  min-height: 150px;
+  position: relative;
+  flex-shrink: 0;
+  margin-top: 36px;
+  padding: 12px 12px 44px;
+  background: rgba(10, 10, 14, 0.55);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity .2s ease, transform .25s ease;
+}
+.actions.on { display: block; opacity: 1; transform: none; }
+.actions-left { padding-top: 2px; max-width: 100%; padding-right: 4px; }
+.actions-name { font-size: 13px; font-weight: 500; margin-bottom: 6px; word-break: break-word; }
+.actions-meta { font-size: 11px; color: #d4d4d4; margin-bottom: 4px; }
+.dim { color: #868686; }
+.actions-und { position: absolute; right: 10px; top: 10px; }
+.und-box {
+  width: 44px; height: 44px;
+  background: url("./assets/slot_bg.png") center/contain no-repeat;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.und-qty { font-size: 13px; font-weight: 500; line-height: 1; }
+.und-label { font-size: 8px; color: rgba(255,255,255,.45); margin-top: 2px; }
+.actions-btns {
+  position: absolute; left: 12px; right: 12px; bottom: 10px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.actions-btns .btn { width: 100%; }
+.btn {
+  width: 90px; height: 28px; border: 0; border-radius: 4px;
+  font: inherit; font-size: 12px; cursor: pointer; color: #fff;
+}
+.btn.primary { background: #4f4fce; }
+.btn.ghost { background: rgba(255,255,255,.12); }
+.btn:hover { filter: brightness(1.12); }
+
+.helplist {
+  position: absolute; left: 50%; bottom: 4.5vh;
+  transform: translateX(-50%);
+  display: flex; gap: 18px; flex-wrap: wrap; justify-content: center;
+  font-size: 10px; color: rgba(255,255,255,.35);
+  opacity: 0; transition: opacity .4s ease .15s;
+  pointer-events: none;
+}
+#root.on .helplist { opacity: 1; }
+.helplist b { color: rgba(255,255,255,.7); font-weight: 500; margin-right: 4px; }
+
+.tooltip {
+  position: fixed; z-index: 40; display: none;
+  width: 222px; min-height: 76px; padding: 12px;
+  background: rgba(18,18,22,.88);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 6px; pointer-events: none;
+}
+.tooltip.on { display: flex; justify-content: space-between; gap: 8px; }
+.tip-name { font-size: 13px; margin-bottom: 6px; }
+.tip-meta { font-size: 11px; color: #d4d4d4; margin-bottom: 3px; }
+
+.sep-overlay {
+  position: absolute; inset: 0; display: none;
+  align-items: center; justify-content: center;
+  background: rgba(0,0,0,.28); z-index: 50;
+}
+.sep-overlay.on { display: flex; }
+.sep-box {
+  min-width: 280px; padding: 22px 24px 16px;
+  background: rgba(22,22,28,.92);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 8px;
+}
+.sep-title { font-size: 14px; margin-bottom: 14px; }
+.sep-input {
+  width: 100%; height: 36px; border-radius: 7px;
+  border: 1px solid rgba(52,52,52,.8);
+  background: rgba(0,0,0,.25); color: #fff;
+  text-align: center; font: inherit; font-size: 14px;
+  outline: none; margin-bottom: 14px;
+}
+.sep-btns { display: flex; gap: 8px; }
+.sep-btns .btn { flex: 1; width: auto; }
+
+.drag-ghost {
+  position: fixed; width: 68px; height: 68px;
+  pointer-events: none !important; z-index: 9999; display: none;
+  background: url("./assets/slot_bg.png") center/contain no-repeat;
+  opacity: .95;
+  left: 0; top: 0;
+  will-change: left, top;
+}
+.drag-ghost.on { display: block; }
+.drag-ghost img {
+  position: absolute; inset: 8px;
+  width: calc(100% - 16px); height: calc(100% - 16px);
+  object-fit: contain;
+  pointer-events: none !important;
+}
+.slot.dragging {
+  opacity: 0.2 !important;
+}
+.slot.dragging .icon,
+.slot.dragging .qty,
+.slot.dragging .stack {
+  visibility: hidden;
+}

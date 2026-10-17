@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./style.css?v=16" />
 </head>
 <body>
   <section class="box is-on" id="box" role="dialog" aria-labelledby="title">
@@ -22,6 +22,11 @@
         <code>/rep</code> <span class="alias">ou /reparar</span>
         <p>Repara o carro (vida cheia)</p>
       </li>
+      <li class="is-new">
+        <span class="badge-novo">NOVO</span>
+        <code>/ir</code>
+        <p>Vai ate o jogador.</p>
+      </li>
       <li>
         <code>/lob</code>
         <p>Teleporta para o ponto do lobby.</p>
@@ -31,16 +36,27 @@
         <p>Troca a sua skin (0–311).</p>
       </li>
       <li>
-        <code>/arma</code> <span class="arg">[id] [muni]</span>
-        <p>Pega arma. M4 com 500.</p>
+        <code>/arma</code>
+        <p>Pega arma.</p>
       </li>
       <li>
-        <code>/car</code> <span class="arg">[modelo]</span>
-        <p>Cria um veiculo e te coloca nele.</p>
+        <code>/car</code>
+        <p>Puxar um veiculo.</p>
       </li>
-      <li>
-        <code>/motor</code>
-        <p>Liga ou desliga o motor do veiculo.</p>
+      <li class="is-new">
+        <span class="badge-novo">NOVO</span>
+        <code>/tunar</code>
+        <p>Aplica nitro no veiculo.</p>
+      </li>
+      <li class="is-new">
+        <span class="badge-novo">NOVO</span>
+        <code>'</code>
+        <p>Abre o inventario.</p>
+      </li>
+      <li class="is-new">
+        <span class="badge-novo">NOVO</span>
+        <code>ALT</code>
+        <p>Segura ALT: olhinho (target) em veiculo/jogador.</p>
       </li>
       <li>
         <code>/farol</code>
@@ -65,6 +81,6 @@
     </footer>
   </section>
 
-  <script src="./app.js"></script>
+  <script src="./app.js?v=16"></script>
 </body>
 </html>

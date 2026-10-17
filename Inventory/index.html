@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pixel_inv</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css?v=15" />
+</head>
+<body>
+  <!-- Hotbar rodape: OFF por padrao — tecla H liga/desliga | ' abre inventario | 1-5 usa slot -->
+  <div id="dock" class="dock">
+    <div class="dock-row" id="dockRow"></div>
+  </div>
+
+  <div id="root" class="off">
+    <div class="bg" id="bg"></div>
+
+    <div class="stage" id="stage">
+      <div class="main-col" id="mainCol">
+        <div class="hotbar-block" id="hotbarBlock">
+          <div class="hotbar-head">
+            <span class="hot-title">HOTBAR</span>
+            <div class="hot-line"></div>
+            <div class="tabs" id="tabs">
+              <button type="button" class="tab" data-tab="trade" title="Troca">
+                <img class="tab-bg" src="./assets/bg_menu.png" alt="" />
+                <img class="tab-ico" src="./assets/bg_trade.png" alt="" />
+              </button>
+              <button type="button" class="tab disabled" data-tab="clothing" title="Roupas (em breve)" disabled>
+                <img class="tab-bg" src="./assets/bg_menu.png" alt="" />
+                <img class="tab-ico" src="./assets/bg_clothing.png" alt="" />
+              </button>
+              <button type="button" class="tab active" data-tab="bag" title="Mochila">
+                <img class="tab-bg" src="./assets/bg_menu.png" alt="" />
+                <img class="tab-ico" src="./assets/bg_bag.png" alt="" />
+              </button>
+            </div>
+          </div>
+          <div class="hotbar" id="hotbar"></div>
+        </div>
+
+        <div class="bag-row" id="bagRow">
+          <section class="bag" id="bag">
+            <div class="bag-head">
+              <span class="title">Inventario</span>
+              <div class="weight">
+                <div class="weight-row">
+                  <span id="usedKg">0.4</span><span class="muted">/40 kg</span>
+                </div>
+                <div class="bars" id="weightBars"></div>
+              </div>
+            </div>
+            <div class="head-line"></div>
+            <div class="grid" id="grid"></div>
+          </section>
+
+          <!-- Painel Usar colado a DIREITA da box -->
+          <aside class="actions" id="actions">
+            <div class="actions-left">
+              <div class="actions-name" id="actName">Item</div>
+              <div class="actions-meta"><span id="actWeight">0.2</span> <span class="dim">kg</span></div>
+              <div class="actions-meta dim" id="actValid">Nao danificado</div>
+            </div>
+            <div class="actions-und">
+              <div class="und-box">
+                <div class="und-qty" id="actQty">1</div>
+                <div class="und-label">UND</div>
+              </div>
+            </div>
+            <div class="actions-btns">
+              <button type="button" class="btn primary" id="btnUse">Usar</button>
+              <button type="button" class="btn ghost" id="btnSep">Separar</button>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <!-- Meio: quantidade + enviar (arrastar ou botao) -->
+      <div class="trade-bridge" id="tradeBridge">
+        <div class="bridge-label">Quantidade</div>
+        <input class="bridge-input" id="tradeQty" type="text" inputmode="numeric" maxlength="4" value="1" />
+        <button type="button" class="btn primary bridge-send" id="btnTradeSend">Enviar</button>
+        <div class="bridge-hint" id="tradeHint">sem parceiro = chao</div>
+      </div>
+
+      <aside class="trade-box" id="tradeBox">
+        <div class="bag-head">
+          <span class="title" id="tradeTitle">Troca / Chao</span>
+          <div class="weight">
+            <div class="weight-row"><span class="muted" id="tradePartner">solte aqui / enviar</span></div>
+          </div>
+        </div>
+        <div class="head-line"></div>
+        <div class="grid trade-grid-mirror" id="tradeGrid"></div>
+      </aside>
+    </div>
+
+    <div class="helplist" id="helplist">
+      <span><b>MOUSE</b> arrastar</span>
+      <span><b>MOUSE 2</b> acoes</span>
+      <span><b>TROCA</b> enviar / chao</span>
+      <span><b>'</b> inventário</span>
+      <span><b>H</b> hotbar</span>
+      <span><b>1-5</b> slots</span>
+    </div>
+
+    <div class="tooltip" id="tooltip">
+      <div class="tip-left">
+        <div class="tip-name" id="tipName">Item</div>
+        <div class="tip-meta"><span id="tipWeight">0.2</span> <span class="dim">kg</span></div>
+        <div class="tip-meta dim">Nao danificado</div>
+      </div>
+      <div class="tip-und">
+        <div class="und-box">
+          <div class="und-qty" id="tipQty">1</div>
+          <div class="und-label">UND</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sep-overlay" id="sepOverlay">
+      <div class="sep-box">
+        <div class="sep-title">Quantidade</div>
+        <input class="sep-input" id="sepInput" type="text" inputmode="numeric" placeholder="0" maxlength="4" />
+        <div class="sep-btns">
+          <button type="button" class="btn primary" id="sepOk">Separar</button>
+          <button type="button" class="btn ghost" id="sepCancel">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- FORA do #root: position:fixed quebra com transform do inventario -->
+  <div class="drag-ghost" id="dragGhost"></div>
+  <script src="./app.js?v=15"></script>
+</body>
+</html>
