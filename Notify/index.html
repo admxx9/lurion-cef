@@ -145,6 +145,10 @@
       function dismissNotification(entry) {
         if (!entry || entry.gone) return;
         entry.gone = true;
+        if (entry.timer) {
+          try { clearTimeout(entry.timer); } catch (e) {}
+          entry.timer = null;
+        }
         var el = document.getElementById("notif-" + entry.id);
         if (!el) {
           removeNotification(entry.id);
@@ -161,14 +165,20 @@
           if (!n.gone && now >= n.expireAt) dismissNotification(n);
         }
       }
+      // CEF do launcher (prod) costuma throttlar setInterval em browser sem foco.
+      // Por isso: interval + rAF + timeout por card + tick vindo do GM.
       setInterval(sweep, 200);
+      (function rafSweep() {
+        sweep();
+        try { requestAnimationFrame(rafSweep); } catch (e) { setTimeout(rafSweep, 250); }
+      })();
 
       function showNotification(opts) {
         if (!opts) return;
         var id = uid++;
         var duration = Number(opts.duration);
         if (!isFinite(duration) || duration < 800) duration = 5000;
-        if (duration > 20000) duration = 20000;
+        if (duration > 12000) duration = 12000;
 
         var type = String(opts.type || "info");
         if (type === "atencao" || type === "attention") type = "warning";
@@ -183,8 +193,15 @@
           if (queue[0] && !queue[0].gone) removeNotification(queue[0].id);
         }
 
-        var entry = { id: id, type: type, expireAt: Date.now() + duration, gone: false };
+        var entry = {
+          id: id,
+          type: type,
+          expireAt: Date.now() + duration,
+          gone: false,
+          timer: null
+        };
         queue.push(entry);
+        entry.timer = setTimeout(function () { dismissNotification(entry); }, duration + 50);
 
         var el = document.createElement("div");
         el.className = "notification " + type;
@@ -206,6 +223,7 @@
         bar.style.animation = "none";
         void bar.offsetWidth;
         bar.style.animation = "lurion-progress " + duration + "ms linear forwards";
+        bar.addEventListener("animationend", function () { dismissNotification(entry); });
       }
 
       function normalizeArgs(args) {
@@ -271,8 +289,13 @@
         if (typeof cef !== "undefined" && cef && typeof cef.on === "function") {
           cef.on("notify:show", onShow);
           cef.on("notify:bottom", onBottom);
+          cef.on("notify:tick", function () { sweep(); });
           cef.on("notify:clear", function () {
-            while (queue.length) removeNotification(queue[0].id);
+            while (queue.length) {
+              var n = queue[0];
+              if (n && n.timer) try { clearTimeout(n.timer); } catch (e2) {}
+              removeNotification(n.id);
+            }
             if (bottomEl) bottomEl.className = "lp-bottom";
             bottomUntil = 0;
           });
@@ -293,11 +316,12 @@
           if (Array.isArray(b)) onBottom.apply(null, b);
           else onBottom(b.message || b.msg || b, b.duration);
         }
+        if (d.eventName === "notify:tick" || d.action === "notify:tick") sweep();
       });
 
       window.__lurionNotify = showNotification;
       window.__lurionBottom = showBottom;
-      console.log("[lurion-notify] ready v14");
+      console.log("[lurion-notify] ready v16");
     })();
   </script>
 </body>
